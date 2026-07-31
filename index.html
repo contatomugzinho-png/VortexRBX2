@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vortex RBX - Roblox Asset Hub</title>
-    <!-- Tailwind CSS para estilização rápida e moderna -->
+    <title>Vortex RBX - O Hub Definitivo de Assets Roblox</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
@@ -14,87 +13,102 @@
         }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between">
+<body class="min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-black">
 
-    <!-- Cabeçalho (Header) -->
-    <header class="w-full py-5 px-8 flex items-center justify-between border-b border-zinc-900">
+    <!-- Cabeçalho -->
+    <header class="w-full py-5 px-8 flex items-center justify-between border-b border-zinc-900/80 sticky top-0 bg-[#0b0b0b]/80 backdrop-blur-md z-50">
         <div class="flex items-center space-x-3">
-            <!-- Logo 100x100 proporcional -->
-            <div class="w-10 h-10 bg-black border border-zinc-800 rounded flex items-center justify-center overflow-hidden">
+            <div class="w-10 h-10 bg-black border border-zinc-800 rounded-xl flex items-center justify-center overflow-hidden shadow-lg shadow-cyan-500/10">
                 <span class="text-xs font-bold tracking-wider text-cyan-400">VRBX</span>
             </div>
             <span class="text-lg font-bold tracking-wide">Vortex <span class="text-cyan-400">RBX</span></span>
         </div>
-        <nav class="hidden md:flex space-x-6 text-sm text-zinc-400">
-            <a href="#" class="hover:text-white transition">Início</a>
-            <a href="#" class="hover:text-white transition">Skins 3D</a>
-            <a href="#" class="hover:text-white transition">Roupas</a>
-            <a href="#" class="hover:text-white transition">Acessórios</a>
+        <nav class="hidden md:flex space-x-8 text-sm text-zinc-400 font-medium">
+            <a href="#inicio" class="hover:text-white transition">Início</a>
+            <a href="#recursos" class="hover:text-white transition">Recursos</a>
+            <a href="#sobre" class="hover:text-white transition">Como Funciona</a>
         </nav>
+        <div>
+            <a href="#" class="bg-cyan-500 hover:bg-cyan-400 text-black font-semibold px-5 py-2.5 rounded-xl text-xs md:text-sm transition shadow-lg shadow-cyan-500/20">
+                Acessar Ferramenta
+            </a>
+        </div>
     </header>
 
-    <!-- Conteúdo Principal (Hero & Features) -->
-    <main class="flex-grow flex flex-col items-center justify-center px-4 py-12 text-center">
+    <!-- Seção Principal (Hero Section de Apresentação) -->
+    <main id="inicio" class="flex-grow flex flex-col items-center justify-center px-4 py-20 text-center">
         
-        <!-- Título de Apresentação -->
-        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">
-            Baixe seus Assets do Roblox <span class="text-cyan-400">Instantaneamente</span>
-        </h1>
-        <p class="text-zinc-400 max-w-xl mb-10 text-sm md:text-base">
-            O hub definitivo para resgatar modelos 3D de skins de usuários, roupas e acessórios por ID com facilidade.
-        </p>
-
-        <!-- Barra de Pesquisa por ID -->
-        <div class="w-full max-w-2xl mb-16">
-            <div class="flex items-center bg-zinc-900 border border-zinc-800 rounded-xl p-2 shadow-2xl focus-within:border-cyan-500 transition">
-                <input type="text" placeholder="Cole o ID do Asset ou nome de usuário..." class="w-full bg-transparent px-4 text-sm text-white focus:outline-none placeholder-zinc-500">
-                <button class="bg-cyan-500 hover:bg-cyan-400 text-black font-semibold px-6 py-3 rounded-lg text-sm transition">
-                    Pesquisar
-                </button>
-            </div>
+        <!-- Badge de Destaque -->
+        <div class="inline-flex items-center space-x-2 bg-zinc-900 border border-zinc-800 px-4 py-1.5 rounded-full text-xs text-zinc-300 mb-8 shadow-inner">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+            <span>A nova era de extração de assets para criadores</span>
         </div>
 
-        <!-- Cards de Funcionalidades / Categorias -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl w-full">
-            <!-- Card 1: Skin 3D -->
-            <div class="bg-zinc-900/50 border border-zinc-800/80 p-6 rounded-2xl hover:border-cyan-500/50 transition text-left flex flex-col justify-between">
-                <div>
-                    <div class="w-12 h-12 bg-zinc-800 rounded-lg flex items-center justify-center text-cyan-400 mb-4 font-bold">3D</div>
-                    <h3 class="text-lg font-semibold mb-2">Skin Completa</h3>
-                    <p class="text-xs text-zinc-400 leading-relaxed">Baixe o modelo 3D completo da skin de qualquer usuário, incluindo malhas e texturas (.obj / .png).</p>
-                </div>
-                <span class="text-xs text-cyan-400 mt-6 font-medium inline-block">Usar por Username &rarr;</span>
+        <!-- Título Impactante -->
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight max-w-4xl mb-6 leading-tight">
+            Explore, Baixe e Crie com <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Assets do Roblox</span> em Segundos.
+        </h1>
+        
+        <!-- Subtítulo de Apresentação -->
+        <p class="text-zinc-400 max-w-2xl mb-12 text-base md:text-lg leading-relaxed">
+            O **Vortex RBX** foi desenvolvido para criadores, designers e desenvolvedores que precisam extrair modelos 3D de skins completas, roupas texturizadas e acessórios de forma rápida, segura e organizada.
+        </p>
+
+        <!-- Botões de Ação da Apresentação -->
+        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 w-full max-w-md justify-center">
+            <a href="#" class="w-full sm:w-auto bg-cyan-500 hover:bg-cyan-400 text-black font-bold px-8 py-4 rounded-xl text-sm transition text-center shadow-xl shadow-cyan-500/20">
+                Começar a Baixar Agora &rarr;
+            </a>
+            <a href="#recursos" class="w-full sm:w-auto bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-white font-medium px-8 py-4 rounded-xl text-sm transition text-center">
+                Conhecer Recursos
+            </a>
+        </div>
+
+        <!-- Seção de Recursos / Benefícios -->
+        <div id="recursos" class="mt-32 max-w-6xl w-full text-left">
+            <div class="text-center mb-16">
+                <h2 class="text-2xl md:text-3xl font-bold mb-3">Tudo o que você precisa em um só lugar</h2>
+                <p class="text-zinc-400 text-sm">Tecnologia otimizada para extração limpa de arquivos.</p>
             </div>
 
-            <!-- Card 2: Roupas -->
-            <div class="bg-zinc-900/50 border border-zinc-800/80 p-6 rounded-2xl hover:border-cyan-500/50 transition text-left flex flex-col justify-between">
-                <div>
-                    <div class="w-12 h-12 bg-zinc-800 rounded-lg flex items-center justify-center text-cyan-400 mb-4 font-bold">👕</div>
-                    <h3 class="text-lg font-semibold mb-2">Roupas (ID)</h3>
-                    <p class="text-xs text-zinc-400 leading-relaxed">Extraia texturas de camisas, calças e roupas 2D diretamente colando o ID oficial do catálogo.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-zinc-900/40 border border-zinc-800/80 p-8 rounded-2xl hover:border-cyan-500/50 transition flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-cyan-500/10 border border-cyan-500/20 rounded-xl flex items-center justify-center text-cyan-400 mb-6 font-bold text-lg">3D</div>
+                        <h3 class="text-xl font-semibold mb-3">Skins de Usuários (3D)</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed">Baixe o modelo tridimensional completo da skin de qualquer jogador do Roblox, incluindo malhas detalhadas e texturas prontas para uso.</p>
+                    </div>
                 </div>
-                <span class="text-xs text-cyan-400 mt-6 font-medium inline-block">Baixar por ID &rarr;</span>
-            </div>
 
-            <!-- Card 3: Acessórios -->
-            <div class="bg-zinc-900/50 border border-zinc-800/80 p-6 rounded-2xl hover:border-cyan-500/50 transition text-left flex flex-col justify-between">
-                <div>
-                    <div class="w-12 h-12 bg-zinc-800 rounded-lg flex items-center justify-center text-cyan-400 mb-4 font-bold">👑</div>
-                    <h3 class="text-lg font-semibold mb-2">Acessórios</h3>
-                    <p class="text-xs text-zinc-400 leading-relaxed">Colete cabelos, chapéus, óculos e outros acessórios tridimensionais informando o ID do item.</p>
+                <!-- Card 2 -->
+                <div class="bg-zinc-900/40 border border-zinc-800/80 p-8 rounded-2xl hover:border-cyan-500/50 transition flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-cyan-500/10 border border-cyan-500/20 rounded-xl flex items-center justify-center text-cyan-400 mb-6 font-bold text-lg">👕</div>
+                        <h3 class="text-xl font-semibold mb-3">Roupas por ID</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed">Insira o ID oficial do catálogo para resgatar texturas de camisas, calças e vestimentas em alta qualidade de forma instantânea.</p>
+                    </div>
                 </div>
-                <span class="text-xs text-cyan-400 mt-6 font-medium inline-block">Baixar por ID &rarr;</span>
+
+                <!-- Card 3 -->
+                <div class="bg-zinc-900/40 border border-zinc-800/80 p-8 rounded-2xl hover:border-cyan-500/50 transition flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-cyan-500/10 border border-cyan-500/20 rounded-xl flex items-center justify-center text-cyan-400 mb-6 font-bold text-lg">👑</div>
+                        <h3 class="text-xl font-semibold mb-3">Acessórios Exclusivos</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed">Colete chapéus, cabelos, óculos e itens de ombro informando apenas o código de identificação do item do Roblox.</p>
+                    </div>
+                </div>
             </div>
         </div>
 
     </main>
 
     <!-- Rodapé -->
-    <footer class="w-full py-6 px-8 border-t border-zinc-900 text-center text-xs text-zinc-600 flex flex-col md:flex-row justify-between items-center">
-        <p>Vortex RBX &copy; 2026 - Plataforma não oficial de auxílio a criadores.</p>
-        <div class="space-x-4 mt-2 md:mt-0">
-            <a href="#" class="hover:text-zinc-400 transition">Termos</a>
-            <a href="#" class="hover:text-zinc-400 transition">Privacidade</a>
+    <footer class="w-full py-8 px-8 border-t border-zinc-900 text-center text-xs text-zinc-600 flex flex-col md:flex-row justify-between items-center">
+        <p>Vortex RBX &copy; 2026 - Plataforma voltada para criadores de conteúdo.</p>
+        <div class="space-x-6 mt-4 md:mt-0">
+            <a href="#" class="hover:text-zinc-400 transition">Termos de Uso</a>
+            <a href="#" class="hover:text-zinc-400 transition">Política de Privacidade</a>
         </div>
     </footer>
 
