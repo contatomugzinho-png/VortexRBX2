@@ -20,28 +20,16 @@
                             border: '#1E293B',
                             purple: '#8B5CF6',
                             indigo: '#6366F1',
-                            pink: '#EC4899',
                             cyan: '#06B6D4'
                         }
-                    },
-                    backgroundImage: {
-                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                        'mesh-gradient': 'linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(99, 102, 241, 0.05) 50%, rgba(6, 182, 212, 0.15) 100%)',
                     }
                 }
             }
         }
     </script>
     <style>
-        .glow-effect {
-            box-shadow: 0 0 50px -10px rgba(139, 92, 246, 0.25);
-        }
-        .glow-button {
-            box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.4);
-        }
-        .glow-button:hover {
-            box-shadow: 0 15px 30px -5px rgba(139, 92, 246, 0.6);
-        }
+        .glow-button { box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.4); }
+        .glow-button:hover { box-shadow: 0 15px 30px -5px rgba(139, 92, 246, 0.6); }
         .text-gradient {
             background: linear-gradient(135deg, #A78BFA 0%, #818CF8 50%, #22D3EE 100%);
             -webkit-background-clip: text;
@@ -49,12 +37,12 @@
         }
     </style>
 </head>
-<body class="bg-brand-bg text-slate-100 font-sans antialiased selection:bg-brand-purple/30 selection:text-white min-h-screen relative overflow-x-hidden">
+<body class="bg-brand-bg text-slate-100 font-sans antialiased min-h-screen relative overflow-x-hidden">
 
-    <!-- Elementos de Luz de Fundo (Blur Dinâmico) -->
+    <!-- Fundo -->
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-tr from-brand-purple/20 via-brand-indigo/15 to-brand-cyan/20 blur-[140px] pointer-events-none -z-10 rounded-full"></div>
 
-    <!-- Navegação Estilizada -->
+    <!-- Header -->
     <header class="sticky top-0 z-50 backdrop-blur-xl bg-brand-bg/80 border-b border-brand-border/60">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -65,132 +53,75 @@
                 </div>
                 <span class="text-xl font-bold tracking-tight text-white">Vortex<span class="text-brand-purple">Dev</span></span>
             </div>
-            
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-400">
-                <a href="#" class="hover:text-white transition-colors">Recursos</a>
-                <a href="#" class="hover:text-white transition-colors">Projetos</a>
-                <a href="#" class="hover:text-white transition-colors">Preços</a>
-                <a href="#" class="hover:text-white transition-colors">Comunidade</a>
-            </div>
-
-            <div class="flex items-center gap-4">
-                <button class="text-sm font-medium text-slate-300 hover:text-white px-4 py-2 transition-colors">Entrar</button>
-                <button class="text-sm font-semibold text-white px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-purple to-brand-indigo glow-button transition-all duration-300 hover:scale-[1.02]">
-                    Criar Conta
-                </button>
-            </div>
+            <button class="text-sm font-semibold text-white px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-purple to-brand-indigo glow-button transition-all hover:scale-[1.02]">
+                Criar Conta
+            </button>
         </div>
     </header>
 
-    <!-- Hero Section Ultra Moderna -->
+    <!-- Hero Section -->
     <section class="pt-20 pb-32 px-6 relative">
         <div class="max-w-4xl mx-auto text-center">
-            
-            <!-- Tag de Lançamento -->
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-purple/10 border border-brand-purple/30 text-brand-purple text-xs font-semibold mb-8 backdrop-blur-md">
-                <span class="w-2 h-2 rounded-full bg-brand-purple animate-ping"></span>
-                IA Generativa de Arquitetura Completa v2.0
-            </div>
-
-            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-8 leading-[1.15]">
+            <h1 class="text-5xl sm:text-7xl font-extrabold tracking-tight text-white mb-8 leading-[1.15]">
                 Diga o que você quer construir. <br/>
                 <span class="text-gradient">Nós entregamos o código pronto.</span>
             </h1>
 
-            <p class="text-lg sm:text-xl text-slate-400 mb-12 max-w-2xl mx-auto font-normal leading-relaxed">
-                Esqueça chats que dão respostas picotadas. O VortexDev cria projetos inteiros: bots de Discord, sistemas web completos e infraestrutura estruturada em segundos.
+            <p class="text-xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+                Esqueça chats que dão respostas picotadas. O VortexDev cria projetos inteiros, estruturados e prontos para rodar.
             </p>
 
-            <!-- Caixa de Input Principal (O coração da página) -->
+            <!-- Input Principal -->
             <div class="max-w-3xl mx-auto relative group">
-                <!-- Gradiente de Borda ao Redor -->
                 <div class="absolute -inset-1 bg-gradient-to-r from-brand-purple via-brand-indigo to-brand-cyan rounded-3xl opacity-40 group-hover:opacity-100 transition duration-500 blur-xl"></div>
                 
                 <div class="relative bg-brand-card/90 backdrop-blur-xl p-4 sm:p-5 rounded-3xl border border-brand-border shadow-2xl flex flex-col gap-4">
                     <textarea 
-                        placeholder="Ex: Crie um bot de Discord em Node.js com sistema de tickets, logs e integração com banco de dados PostgreSQL..." 
-                        class="w-full bg-transparent text-slate-100 placeholder:text-slate-600 p-2 focus:outline-none resize-none h-32 text-base sm:text-lg font-medium"
+                        id="promptArea"
+                        placeholder="Ex: Crie um bot de Discord em Node.js com sistema de tickets..." 
+                        class="w-full bg-transparent text-slate-100 placeholder:text-slate-600 p-2 focus:outline-none resize-none h-32 text-lg font-medium"
                     ></textarea>
                     
-                    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-3 border-t border-brand-border/60 px-1">
-                        <div class="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0 text-xs text-slate-400">
-                            <span class="text-slate-500 font-medium">Sugestões:</span>
-                            <button class="bg-brand-border/60 hover:bg-brand-purple/20 hover:text-brand-purple px-3 py-1.5 rounded-lg transition-all text-slate-300 font-medium whitespace-nowrap">🤖 Bot de Discord</button>
-                            <button class="bg-brand-border/60 hover:bg-brand-purple/20 hover:text-brand-purple px-3 py-1.5 rounded-lg transition-all text-slate-300 font-medium whitespace-nowrap">🌐 Dashboard SaaS</button>
-                        </div>
+                    <div class="flex items-center justify-between pt-3 border-t border-brand-border/60 px-1">
+                        <span class="text-slate-500 text-xs font-medium">IA em espera...</span>
                         
-                        <button class="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-brand-purple via-brand-indigo to-brand-cyan text-white font-bold text-sm glow-button transition-all duration-300 hover:scale-[1.02] flex items-center justify-center gap-2 whitespace-nowrap">
-                            Gerar Projeto Vortex
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                        <button 
+                            id="btnGerar"
+                            onclick="iniciarGeracao()" 
+                            class="px-6 py-3 rounded-xl bg-gradient-to-r from-brand-purple via-brand-indigo to-brand-cyan text-white font-bold text-sm glow-button transition-all duration-300 hover:scale-[1.02] flex items-center gap-2"
+                        >
+                            <span id="btnText">Gerar Projeto Vortex</span>
+                            <svg id="btnIcon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
                         </button>
                     </div>
                 </div>
             </div>
-
-            <!-- Estatísticas / Prova Social Rápida -->
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-2xl mx-auto mt-16 pt-12 border-t border-brand-border/40 text-center">
-                <div>
-                    <h3 class="text-2xl sm:text-3xl font-bold text-white mb-1">100+</h3>
-                    <p class="text-xs sm:text-sm text-slate-500">Arquivos por projeto</p>
-                </div>
-                <div>
-                    <h3 class="text-2xl sm:text-3xl font-bold text-white mb-1">&lt; 15s</h3>
-                    <p class="text-xs sm:text-sm text-slate-500">Tempo de geração</p>
-                </div>
-                <div class="col-span-2 md:col-span-1">
-                    <h3 class="text-2xl sm:text-3xl font-bold text-white mb-1">100%</h3>
-                    <p class="text-xs sm:text-sm text-slate-500">Pronto para deploy</p>
-                </div>
-            </div>
-
         </div>
     </section>
 
-    <!-- Seção de Recursos Estilizada -->
-    <section class="py-24 px-6 border-t border-brand-border/60 bg-gradient-to-b from-brand-bg to-brand-card/40 relative">
-        <div class="max-w-6xl mx-auto">
-            
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4 tracking-tight">Construído para Devs Exigentes</h2>
-                <p class="text-slate-400 text-base">Esqueça copiar e colar código solto. O VortexDev entrega a árvore de diretórios inteira organizada.</p>
-            </div>
+    <script>
+        function iniciarGeracao() {
+            const btn = document.getElementById('btnGerar');
+            const btnText = document.getElementById('btnText');
+            const btnIcon = document.getElementById('btnIcon');
+            const prompt = document.getElementById('promptArea').value;
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <!-- Card 1 -->
-                <div class="bg-brand-card border border-brand-border/80 p-8 rounded-3xl relative group hover:border-brand-purple/50 transition-all duration-300">
-                    <div class="absolute inset-0 bg-gradient-to-b from-brand-purple/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div class="w-12 h-12 rounded-2xl bg-brand-purple/10 border border-brand-purple/30 flex items-center justify-center mb-6 text-brand-purple">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Estrutura de Pastas</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Organização modular impecável. Separação limpa entre rotas, componentes, controllers e arquivos de configuração.</p>
-                </div>
+            if (prompt.trim() === "") {
+                alert("Por favor, digite o que você deseja construir!");
+                return;
+            }
 
-                <!-- Card 2 -->
-                <div class="bg-brand-card border border-brand-border/80 p-8 rounded-3xl relative group hover:border-brand-indigo/50 transition-all duration-300">
-                    <div class="absolute inset-0 bg-gradient-to-b from-brand-indigo/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div class="w-12 h-12 rounded-2xl bg-brand-indigo/10 border border-brand-indigo/30 flex items-center justify-center mb-6 text-brand-indigo">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Banco de Dados Incluso</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Já vem com esquemas prontos de modelagem, migrações e conexões configuradas via Prisma, Mongoose ou SQL puro.</p>
-                </div>
+            // Animação de carregamento
+            btn.disabled = true;
+            btn.classList.add('opacity-70', 'cursor-wait');
+            btnText.innerText = 'Arquitetando seu projeto...';
+            btnIcon.style.display = 'none';
 
-                <!-- Card 3 -->
-                <div class="bg-brand-card border border-brand-border/80 p-8 rounded-3xl relative group hover:border-brand-cyan/50 transition-all duration-300">
-                    <div class="absolute inset-0 bg-gradient-to-b from-brand-cyan/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div class="w-12 h-12 rounded-2xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center mb-6 text-brand-cyan">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Segurança e Dependências</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed">Geração automática do arquivo `package.json`, variáveis de ambiente (`.env.example`) e padrões rígidos de segurança.</p>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
+            // Simula o processamento e redireciona
+            setTimeout(() => {
+                window.location.href = 'workspace.html';
+            }, 2000);
+        }
+    </script>
 </body>
 </html>
