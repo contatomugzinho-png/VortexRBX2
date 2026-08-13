@@ -1,71 +1,52 @@
-<!DOCTYPE html>
+l <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <title>Workspace | VortexDev</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .file-explorer { background: #0B0F19; border-right: 1px solid #1E293B; }
-        .code-editor { background: #05070A; }
-        .line-numbers { color: #475569; text-align: right; padding-right: 15px; user-select: none; }
-    </style>
 </head>
 <body class="bg-slate-950 text-slate-200 h-screen flex flex-col overflow-hidden">
 
-    <!-- Top Bar do Workspace -->
-    <header class="h-14 border-b border-slate-800 flex items-center justify-between px-4 bg-brand-bg">
-        <div class="flex items-center gap-3">
-            <span class="text-sm font-bold text-white">Vortex Workspace</span>
-            <span class="text-slate-600">/</span>
-            <span class="text-sm text-brand-purple font-medium">meu-bot-discord</span>
-        </div>
-        <div class="flex gap-2">
-            <button class="bg-green-600 hover:bg-green-500 text-white px-4 py-1.5 rounded-lg text-sm font-semibold transition-all">Download ZIP</button>
-        </div>
+    <header class="h-14 border-b border-slate-800 flex items-center justify-between px-6 bg-[#0B0F19]">
+        <button onclick="window.location.href='index.html'" class="text-xs text-slate-400 hover:text-white">← Voltar para Nova Criação</button>
+        <span class="font-bold text-white tracking-widest">VORTEX WORKSPACE</span>
+        <button class="bg-indigo-600 px-4 py-1 rounded-lg text-sm font-bold">Download ZIP</button>
     </header>
 
-    <!-- Main Content -->
     <main class="flex flex-1 overflow-hidden">
-        
-        <!-- Sidebar Explorer -->
-        <aside class="w-64 file-explorer p-4 flex flex-col gap-2">
-            <div class="text-[10px] uppercase tracking-widest text-slate-500 font-bold mb-2">Explorer</div>
-            <div class="flex items-center gap-2 text-sm text-slate-300 hover:bg-slate-800 p-1 rounded cursor-pointer">📂 src</div>
-            <div class="flex items-center gap-2 text-sm text-slate-300 hover:bg-slate-800 p-1 rounded cursor-pointer ml-4">📄 index.js</div>
-            <div class="flex items-center gap-2 text-sm text-slate-300 hover:bg-slate-800 p-1 rounded cursor-pointer ml-4">📄 commands.py</div>
-            <div class="flex items-center gap-2 text-sm text-slate-300 hover:bg-slate-800 p-1 rounded cursor-pointer">📄 package.json</div>
-            <div class="flex items-center gap-2 text-sm text-slate-300 hover:bg-slate-800 p-1 rounded cursor-pointer">📄 .env.example</div>
+        <aside class="w-64 bg-[#0B0F19] p-4 border-r border-slate-800">
+            <div class="text-xs font-bold text-slate-500 mb-4 uppercase">Arquivos</div>
+            <div id="fileList" class="space-y-2 text-sm text-slate-300"></div>
         </aside>
 
-        <!-- Editor Area -->
-        <section class="flex-1 code-editor flex flex-col">
-            <!-- Tabs -->
-            <div class="flex bg-slate-900 border-b border-slate-800">
-                <div class="px-6 py-2.5 text-sm bg-slate-950 border-t-2 border-brand-purple text-white">index.js</div>
-                <div class="px-6 py-2.5 text-sm text-slate-500 hover:bg-slate-800">commands.py</div>
-            </div>
+        <section class="flex-1 flex flex-col">
+            <pre id="codeDisplay" class="flex-1 p-8 font-mono text-sm overflow-auto text-cyan-300 bg-black"></pre>
             
-            <!-- Code View -->
-            <div class="flex-1 p-6 font-mono text-sm overflow-auto">
-                <pre class="text-slate-300">
-<span class="text-slate-600">1</span>  const { Client, GatewayIntentBits } = require('discord.js');
-<span class="text-slate-600">2</span>  const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-<span class="text-slate-600">3</span>  
-<span class="text-slate-600">4</span>  client.on('ready', () => {
-<span class="text-slate-600">5</span>    console.log(`Logado como ${client.user.tag}!`);
-<span class="text-slate-600">6</span>  });
-<span class="text-slate-600">7</span>  
-<span class="text-slate-600">8</span>  client.login(process.env.TOKEN);
-                </pre>
+            <!-- Chat de Refinamento -->
+            <div class="h-32 border-t border-slate-800 p-4 bg-[#0B0F19]">
+                <input id="chatInput" type="text" class="w-full bg-slate-900 p-3 rounded-lg border border-slate-700 outline-none" placeholder="Peça uma modificação (Ex: Mude a cor do tema para escuro)...">
+                <button onclick="refinarCodigo()" class="mt-2 text-xs text-indigo-400 hover:underline">Enviar modificação</button>
             </div>
         </section>
     </main>
 
-    <!-- Footer Terminal -->
-    <footer class="h-40 border-t border-slate-800 bg-black p-4 font-mono text-xs text-green-500 overflow-auto">
-        <div class="opacity-70">VortexDev Terminal v1.0.0</div>
-        <div>> npm install discord.js dotenv</div>
-        <div class="text-slate-400">added 45 packages in 2.3s</div>
-        <div class="mt-2 text-white">READY: Projeto gerado com sucesso!</div>
-    </footer>
+    <script>
+        const editor = document.getElementById('codeDisplay');
+        
+        function processarPedido() {
+            const prompt = localStorage.getItem('userPrompt');
+            editor.innerText = `// Gerando projeto: ${prompt}\n\n// Estrutura base criada...\nconsole.log("Projeto iniciado!");`;
+            document.getElementById('fileList').innerHTML = "<div>📄 index.js</div><div>📄 style.css</div>";
+        }
+
+        function refinarCodigo() {
+            const mod = document.getElementById('chatInput').value;
+            if(!mod) return;
+            editor.innerText += `\n\n// Aplicando modificação: ${mod}...\n// Código atualizado com sucesso.`;
+            document.getElementById('chatInput').value = '';
+        }
+
+        processarPedido();
+    </script>
 </body>
 </html>
