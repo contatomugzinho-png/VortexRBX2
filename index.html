@@ -2,125 +2,32 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VortexDev — A Nova Era da Programação com IA</title>
+    <title>VortexDev — IA Generativa de Projetos</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            bg: '#030712',
-                            card: '#0B0F19',
-                            border: '#1E293B',
-                            purple: '#8B5CF6',
-                            indigo: '#6366F1',
-                            cyan: '#06B6D4'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
     <style>
         .glow-button { box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.4); }
-        .glow-button:hover { box-shadow: 0 15px 30px -5px rgba(139, 92, 246, 0.6); }
-        .text-gradient {
-            background: linear-gradient(135deg, #A78BFA 0%, #818CF8 50%, #22D3EE 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .text-gradient { background: linear-gradient(135deg, #A78BFA 0%, #22D3EE 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
-<body class="bg-brand-bg text-slate-100 font-sans antialiased min-h-screen relative overflow-x-hidden">
-
-    <!-- Fundo -->
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-tr from-brand-purple/20 via-brand-indigo/15 to-brand-cyan/20 blur-[140px] pointer-events-none -z-10 rounded-full"></div>
-
-    <!-- Header -->
-    <header class="sticky top-0 z-50 backdrop-blur-xl bg-brand-bg/80 border-b border-brand-border/60">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-purple to-brand-cyan p-0.5 shadow-lg shadow-brand-purple/30">
-                    <div class="w-full h-full bg-brand-bg rounded-[10px] flex items-center justify-center">
-                        <span class="font-extrabold text-lg text-transparent bg-clip-text bg-gradient-to-r from-brand-purple to-brand-cyan">V</span>
-                    </div>
-                </div>
-                <span class="text-xl font-bold tracking-tight text-white">Vortex<span class="text-brand-purple">Dev</span></span>
-            </div>
-            <button class="text-sm font-semibold text-white px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-purple to-brand-indigo glow-button transition-all hover:scale-[1.02]">
-                Criar Conta
+<body class="bg-[#030712] text-white min-h-screen flex items-center justify-center p-6">
+    <div class="max-w-2xl w-full text-center">
+        <h1 class="text-6xl font-extrabold mb-6">Construa softwares <br/><span class="text-gradient">na velocidade do pensamento.</span></h1>
+        <p class="text-slate-400 mb-10">Descreva seu projeto completo e o VortexDev gera a arquitetura para você.</p>
+        
+        <div class="bg-[#0B0F19] p-4 rounded-3xl border border-[#1E293B] shadow-2xl">
+            <textarea id="promptArea" class="w-full bg-transparent p-4 outline-none h-32" placeholder="Ex: Crie um site de portfólio moderno..."></textarea>
+            <button onclick="irParaWorkspace()" class="w-full bg-gradient-to-r from-purple-600 to-cyan-500 py-4 rounded-xl font-bold hover:scale-[1.01] transition-all">
+                Gerar Projeto Vortex
             </button>
         </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="pt-20 pb-32 px-6 relative">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-5xl sm:text-7xl font-extrabold tracking-tight text-white mb-8 leading-[1.15]">
-                Diga o que você quer construir. <br/>
-                <span class="text-gradient">Nós entregamos o código pronto.</span>
-            </h1>
-
-            <p class="text-xl text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-                Esqueça chats que dão respostas picotadas. O VortexDev cria projetos inteiros, estruturados e prontos para rodar.
-            </p>
-
-            <!-- Input Principal -->
-            <div class="max-w-3xl mx-auto relative group">
-                <div class="absolute -inset-1 bg-gradient-to-r from-brand-purple via-brand-indigo to-brand-cyan rounded-3xl opacity-40 group-hover:opacity-100 transition duration-500 blur-xl"></div>
-                
-                <div class="relative bg-brand-card/90 backdrop-blur-xl p-4 sm:p-5 rounded-3xl border border-brand-border shadow-2xl flex flex-col gap-4">
-                    <textarea 
-                        id="promptArea"
-                        placeholder="Ex: Crie um bot de Discord em Node.js com sistema de tickets..." 
-                        class="w-full bg-transparent text-slate-100 placeholder:text-slate-600 p-2 focus:outline-none resize-none h-32 text-lg font-medium"
-                    ></textarea>
-                    
-                    <div class="flex items-center justify-between pt-3 border-t border-brand-border/60 px-1">
-                        <span class="text-slate-500 text-xs font-medium">IA em espera...</span>
-                        
-                        <button 
-                            id="btnGerar"
-                            onclick="iniciarGeracao()" 
-                            class="px-6 py-3 rounded-xl bg-gradient-to-r from-brand-purple via-brand-indigo to-brand-cyan text-white font-bold text-sm glow-button transition-all duration-300 hover:scale-[1.02] flex items-center gap-2"
-                        >
-                            <span id="btnText">Gerar Projeto Vortex</span>
-                            <svg id="btnIcon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
 
     <script>
-        function iniciarGeracao() {
-            const btn = document.getElementById('btnGerar');
-            const btnText = document.getElementById('btnText');
-            const btnIcon = document.getElementById('btnIcon');
+        function irParaWorkspace() {
             const prompt = document.getElementById('promptArea').value;
-
-            if (prompt.trim() === "") {
-                alert("Por favor, digite o que você deseja construir!");
-                return;
-            }
-
-            // Animação de carregamento
-            btn.disabled = true;
-            btn.classList.add('opacity-70', 'cursor-wait');
-            btnText.innerText = 'Arquitetando seu projeto...';
-            btnIcon.style.display = 'none';
-
-            // Simula o processamento e redireciona
-            setTimeout(() => {
-                window.location.href = 'workspace.html';
-            }, 2000);
+            if(!prompt) return alert("Digite algo!");
+            localStorage.setItem('userPrompt', prompt);
+            window.location.href = 'workspace.html';
         }
     </script>
 </body>
