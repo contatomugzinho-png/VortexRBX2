@@ -1,47 +1,54 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>ForgeGUI Manual</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ForgeGUI Clone</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background: #08080a; color: white; font-family: sans-serif; }
-        .roblox-gui { background: #161622; border: 2px solid #3b82f6; box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+        body { background: #050505; color: white; font-family: sans-serif; }
+        .glass-input { background: rgba(25, 25, 30, 0.7); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(20px); }
     </style>
 </head>
-<body class="p-6 flex flex-col items-center">
+<body class="flex flex-col items-center justify-center min-h-screen p-4">
 
-    <div class="w-full max-w-2xl bg-slate-900 p-6 rounded-2xl border border-slate-800 mb-8">
-        <h2 class="text-xl font-bold mb-4 text-blue-400">🛠️ Edição Manual (Sem API)</h2>
-        <div class="grid grid-cols-2 gap-4">
-            <input id="inTitle" type="text" placeholder="Título" class="bg-black p-2 rounded border border-slate-700" oninput="update()">
-            <input id="inSub" type="text" placeholder="Subtítulo" class="bg-black p-2 rounded border border-slate-700" oninput="update()">
-            <input id="inBtn1" type="text" placeholder="Botão 1" class="bg-black p-2 rounded border border-slate-700" oninput="update()">
-            <input id="inBtn2" type="text" placeholder="Botão 2" class="bg-black p-2 rounded border border-slate-700" oninput="update()">
-        </div>
+    <!-- Mensagem Principal -->
+    <div class="text-center mb-8">
+        <h1 class="text-4xl font-bold tracking-tight">Type an idea to<br>start creating</h1>
     </div>
 
-    <!-- Área da Thumbnail -->
-    <div id="canvas" class="w-full max-w-md aspect-video bg-slate-800 rounded-xl flex items-center justify-center p-4">
-        <div id="gui" class="roblox-gui w-full p-4 rounded-xl">
-            <div class="flex justify-between mb-4">
-                <div class="flex gap-1"><div class="w-3 h-3 bg-red-500 rounded-full"></div><div class="w-3 h-3 bg-yellow-500 rounded-full"></div></div>
-                <span id="outSub" class="text-xs text-slate-400">V1.0</span>
+    <!-- Container do Prompt (Idêntico ao da imagem) -->
+    <div class="w-full max-w-lg glass-input p-4 rounded-3xl shadow-2xl">
+        <textarea id="prompt" placeholder="What do you want to generate?" 
+            class="w-full bg-transparent p-2 h-24 resize-none outline-none text-slate-300"></textarea>
+        
+        <div class="flex items-center justify-between mt-2">
+            <div class="flex gap-2">
+                <button class="p-3 bg-white/5 rounded-full hover:bg-white/10">🖼️</button>
+                <button class="p-3 bg-white/5 rounded-full hover:bg-white/10">✨</button>
+                <button class="p-3 bg-white/5 rounded-full hover:bg-white/10">code</button>
             </div>
-            <h1 id="outTitle" class="text-3xl font-bold text-center mb-4">TÍTULO</h1>
-            <div class="grid grid-cols-2 gap-2">
-                <button id="outBtn1" class="bg-blue-600 p-2 text-xs font-bold rounded">BOTÃO 1</button>
-                <button id="outBtn2" class="bg-slate-700 p-2 text-xs font-bold rounded">BOTÃO 2</button>
-            </div>
+            <button onclick="enviar()" class="p-4 bg-blue-600 rounded-full hover:bg-blue-500 transition">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
+            </button>
         </div>
     </div>
 
     <script>
-        function update() {
-            document.getElementById('outTitle').innerText = document.getElementById('inTitle').value || "TÍTULO";
-            document.getElementById('outSub').innerText = document.getElementById('inSub').value || "V1.0";
-            document.getElementById('outBtn1').innerText = document.getElementById('inBtn1').value || "BOTÃO 1";
-            document.getElementById('outBtn2').innerText = document.getElementById('inBtn2').value || "BOTÃO 2";
+        async function enviar() {
+            let key = localStorage.getItem('my_key');
+            if(!key) {
+                key = prompt("Como você não quer chave no código, cole sua API Key aqui só uma vez (o navegador vai salvar pra você):");
+                if(key) localStorage.setItem('my_key', key);
+                else return;
+            }
+            
+            const p = document.getElementById('prompt').value;
+            if(!p) return alert("Escreva o que você quer gerar!");
+
+            alert("Conectando com IA usando sua chave salva... Gerando: " + p);
+            // Aqui entra a lógica da chamada da API usando a 'key' salva no localStorage
         }
     </script>
 </body>
